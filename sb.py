@@ -298,27 +298,14 @@ def clBot(op):
                     runtime = timeNow - botStart
                     runtime = format_timespan(runtime)
                     cl.sendMessage(to, "Bot Aktif Selama {}".format(str(runtime)))
-                elif text.lower() == 'about':
-                    try:
-                        arr = []
-                        owner = "ud296655acef67cbd5e8208e63629f78b"
-                        creator = cl.getContact(owner)
-                        contact = cl.getContact(clMID)
-                        grouplist = cl.getGroupIdsJoined()
-                        contactlist = cl.getAllContactIds()
-                        blockedlist = cl.getBlockedContactIds()
-                        ret_ = "╔══[ About Self ]"
-                        ret_ += "\n╠ Line : {}".format(contact.displayName)
-                        ret_ += "\n╠ Group : {}".format(str(len(grouplist)))
-                        ret_ += "\n╠ Friend : {}".format(str(len(contactlist)))
-                        ret_ += "\n╠ Blocked : {}".format(str(len(blockedlist)))
-                        ret_ += "\n╠══[ About Selfbot ]"
-                        ret_ += "\n╠ Version : Free"
-                        ret_ += "\n╠ Creator : {}".format(creator.displayName)
-                        ret_ += "\n╚══[ SELFBOT ]"
-                        cl.sendMessage(to, str(ret_))
-                    except Exception as e:
-                        cl.sendMessage(msg.to, str(e))
+                elif text.lower() == 'tessst':
+                    if msg.toType == 2:
+                        X = cl.getGroup(msg.to)
+                        if X.invitee is not None:
+                            gInviMids = [contact.mid for contact in X.invitee]
+                            cl.cancelGroupInvitation(msg.to, gInviMids)
+                        else:
+                            cl.sendText(msg.to,"nowwww")
                 elif text.lower() == 'status':
                     try:
                         ret_ = "━━━━┅═❉ই۝ई❉═┅━━━━\n          ❇    STATUS    ❇\n╭━━━━━━━━━━━━━━━━\n║╭❉ 🔵[ON]|[OFF]🔴 ❇\n║┝───────────────"
